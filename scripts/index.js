@@ -8,7 +8,7 @@ const user = {
 user.name = 'Pete';
 delete user.name;
 
-// //Task #2
+// //task #2
 // const user = {
 //     name: '«John»'
 // };
