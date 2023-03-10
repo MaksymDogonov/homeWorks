@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const number1 = +prompt('Add number 1');
 const number2 = +prompt('Add number 2');
 const addition = (a, b) => a + b;
