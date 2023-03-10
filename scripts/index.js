@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const operation = prompt('select arithmetic operation (add, sub, mult, div)');
 const number1 = +prompt('Add number 1');
