@@ -5,7 +5,7 @@ const number2 = +prompt('add 2 number');
 
 //task 1
 const comparison = (a, b) => {
-    return a === b;
+    return a === b
 };
 console.log(comparison(number1, number2));
 
