@@ -24,4 +24,5 @@ switch (isNaN(+numOrStr) ? "NaN" : numOrStr === null ? "null" : numOrStr.trim().
         break;
     default:
         console.log('OK!');
+        break;
 }
