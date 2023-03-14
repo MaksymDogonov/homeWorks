@@ -1,12 +1,12 @@
 'use strict';
 
 //task 1
-// const num = +prompt('add number');
-// if(num <= 0 || num === null || num.trim() === ''){
-//     alert('try again');
-// } else {
-//     alert('OK');
-// }
+const num = +prompt('add number');
+if(num <= 0 || num === null || num.trim() === ''){
+    alert('try again');
+} else {
+    alert('OK');
+}
 
 //task 2
 let numOrStr = prompt('input number or string');
