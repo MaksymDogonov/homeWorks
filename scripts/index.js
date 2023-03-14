@@ -1,39 +1,53 @@
 'use strict';
 
-let years = prompt('add your age');
+let years = prompt('add your year of birth');
 console.log(years);
 if (years != null) {
     const city = prompt('add your city');
     if (city != null) {
         const sport = prompt('add your favorite sport ');
+        let resultMainSport = null;
         if (sport != null) {
+            let resultMainSport = null;
             if (sport === 'Футбол') {
-                const resultMainSport = 'Cristiano Ronaldo';
+                resultMainSport = 'Cristiano Ronaldo';
             } else if (sport === 'Баскетбол') {
-                const resultMainSport = 'Shaquille O Neal';
+                resultMainSport = 'Shaquille O Neal';
             } else if (sport === 'Волейбол') {
-                const resultMainSport = 'Эрвин Нгапет';
+                resultMainSport = 'Эрвин Нгапет';
             }
 
+            let resultCapital = null;
             if (city === 'Киев') {
-                const resultCapital = 'Ukraine';
+                resultCapital = 'Ukraine';
             } else if (city === 'Минск') {
-                const resultCapital = 'belarus';
+                resultCapital = 'belarus';
             } else if (city === 'Москва') {
-                const resultCapital = 'russia';
+                resultCapital = 'russia';
             }
-            years = 2023 - years
-            const resultCity = resultCapital === city ? `Ты живешь в столице ${resultCapital}` : `ты живешь в городе ${city}`;
-            const resultSport = resultMainSport === sport ? `Круто! Хочешь стать ${resultMainSport}` : `твой любимый спорт: ${sport}`;
-            alert(`your age ${years} ${resultCity} ${resultSport}`)
+
+            years = 2023 - years;
+            let cityMessage = '';
+            if (resultCapital) {
+                cityMessage = `Ты живешь в столице ${resultCapital}`;
+            } else {
+                cityMessage = `ты живешь в городе ${city}`;
+            }
+
+            let sportMessage = '';
+            if (resultMainSport) {
+                sportMessage = `Круто! Хочешь стать ${resultMainSport}`;
+            } else {
+                sportMessage = `твой любимый спорт: ${sport}`;
+            }
+
+            alert(`your age ${years} ${cityMessage} ${sportMessage}`)
         } else {
             alert('Жаль, что Вы не захотели ввести свой любимый спорт');
         }
-
     } else {
         alert('Жаль, что Вы не захотели ввести свой город');
     }
-
 } else {
     alert('Жаль, что Вы не захотели ввести свой(ю) дату рождения');
 }
