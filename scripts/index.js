@@ -2,12 +2,12 @@
 
 let years = prompt('add your year of birth');
 console.log(years);
-if (years != null) {
+if (years !== null) {
     const city = prompt('add your city');
-    if (city != null) {
+    if (city !== null) {
         const sport = prompt('add your favorite sport ');
         let resultMainSport = null;
-        if (sport != null) {
+        if (sport !== null) {
             let resultMainSport = null;
             if (sport === 'Футбол') {
                 resultMainSport = 'Cristiano Ronaldo';
@@ -27,14 +27,14 @@ if (years != null) {
             }
 
             years = 2023 - years;
-            let cityMessage = '';
+            let cityMessage = null;
             if (resultCapital) {
                 cityMessage = `Ты живешь в столице ${resultCapital}`;
             } else {
                 cityMessage = `ты живешь в городе ${city}`;
             }
 
-            let sportMessage = '';
+            let sportMessage = null;
             if (resultMainSport) {
                 sportMessage = `Круто! Хочешь стать ${resultMainSport}`;
             } else {
