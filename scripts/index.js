@@ -22,17 +22,25 @@ if (years != null) {
     if (city != null) {
         const sport = prompt('add your favorite sport ');
         if (sport != null) {
-            if(sport === 'Футбол'){
-                const resultSport = 'Cristiano Ronaldo';
-            } else if (sport === 'Баскетбол'){
-                const resultSport = 'Shaquille O Neal';
-            } else if (sport === 'Волейбол'){
-                const resultSport = 'Эрвин Нгапет';
+            if (sport === 'Футбол') {
+                const resultMainSport = 'Cristiano Ronaldo';
+            } else if (sport === 'Баскетбол') {
+                const resultMainSport = 'Shaquille O Neal';
+            } else if (sport === 'Волейбол') {
+                const resultMainSport = 'Эрвин Нгапет';
             }
-            years = 2023- years
-            alert(`your age ${years} 
-            ${city === 'Киев' ||'Минск'||'Москва' ? alert(`Ты живешь в столице ${city}`) : alert(`ты живешь в городе ${city}`)}
-            ${sport === 'Футбол' ||'Баскетбол'||'Волейбол' ? alert(`Круто! Хочешь стать ${resultSport}`) : alert(`твой любимый спорт: ${sport}`)}`)
+
+            if (city === 'Киев') {
+                const resultCapital = 'Ukraine';
+            } else if (city === 'Минск') {
+                const resultCapital = 'belarus';
+            } else if (city === 'Москва') {
+                const resultCapital = 'russia';
+            }
+            years = 2023 - years
+            const resultCity = resultCapital === city ? `Ты живешь в столице ${resultCapital}` : `ты живешь в городе ${city}`;
+            const resultSport = resultMainSport === sport ? `Круто! Хочешь стать ${resultMainSport}` : `твой любимый спорт: ${sport}`;
+            alert(`your age ${years} ${resultCity} ${resultSport}`)
         } else {
             alert('Жаль, что Вы не захотели ввести свой любимый спорт');
         }
