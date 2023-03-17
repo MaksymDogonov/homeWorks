@@ -81,8 +81,8 @@ for (let i = 1; i <= mathRandom; i++) {
         resultEvenNumb = resultEvenNumb += i;
     }
 }
-console.log(`result task 10 : ${quantity}`);
-console.log(`result task 11 : ${resultEvenNumb}`);
+console.log(`task 10 quantity even numb: ${+quantity}`);
+console.log(`task 11 sum even numb: ${+resultEvenNumb}`);
 
 //task 12
 
