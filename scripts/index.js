@@ -1,6 +1,6 @@
 'use strict';
 
-const padString = (str, num, symbol, bull) => {
+const padString = (str, num, symbol, bool) => {
     if (str === undefined) {
         return 'Error string';
     } else if (num === undefined) {
