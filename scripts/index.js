@@ -7,7 +7,7 @@ const padString = (str, num, symbol, bool) => {
         return 'Error number';
     } else if (symbol === undefined) {
         return 'Error symbol';
-    } else if (bull === undefined) {
+    } else if (bool === undefined) {
         return 'Error bullion';
     } else {
         let strAddSymbol = '';
@@ -15,7 +15,7 @@ const padString = (str, num, symbol, bool) => {
             strAddSymbol += symbol;
         }
         let strSymbolAndStr = '';
-        if (bull === false) {
+        if (bool === false) {
             strSymbolAndStr = strSymbolAndStr.concat(strAddSymbol, str);
         } else {
             strSymbolAndStr = strSymbolAndStr.concat(str, strAddSymbol);
