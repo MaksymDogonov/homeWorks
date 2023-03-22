@@ -8,7 +8,7 @@ const padString = (str, num, symbol, bool) => {
     } else if (symbol === undefined) {
         return 'Error symbol';
     } else if (bool === undefined) {
-        return 'Error bullion';
+        return 'Error boolean';
     } else {
         let strAddSymbol = '';
         for (let i = str.length; i < num; i++) {
