@@ -15,4 +15,3 @@ if (isNaN(+number) || number === null || number.trim() === '') {
         alert(`${number} год`);
     }
 }
-;
