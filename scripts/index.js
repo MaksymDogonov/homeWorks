@@ -29,23 +29,15 @@ const array = [2, 5, 9, 6];
 // }
 // lastIndexOf(array, 7);
 //find
-const doSomething = (element, index, arr) => {
+const find = (arr, callback) => {
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === element) {
+        if (callback(arr[i], i, arr)) {
             return arr[i];
-        }
-    }
-}
-function find(arr, callback) {
-    for (let i = 0; i < arr.length; i++) {
-        if (callback(element, i, arr)) {
-            return element;
         }
     }
     return undefined;
 }
-
-find(array, doSomething(5));
+find(array, (it) => it === 9);
 
 //findIndex
 
