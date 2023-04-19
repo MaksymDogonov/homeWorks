@@ -54,7 +54,7 @@ function usersChecks(users) {
     const usersBalanceMore2000 = [];
     let sum = 0
     for (let user of users) {
-        let temp = user.balance.replace(/[^0-9.]/g, '');
+        const temp = user.balance.replace(/[^0-9.]/g, '');
         sum += temp * 100;
         if (temp > 2000) {
             usersBalanceMore2000.push(user.phone);
@@ -64,5 +64,5 @@ function usersChecks(users) {
     return [sum, usersBalanceMore2000];
 }
 const usersResults = usersChecks(users);
-console.log(`масив телефонних номерів користувачів балангс яких більше 2000: ${usersResults[1]}`);
+console.log(`масив телефонних номерів користувачів балангс яких більше 2000: `, usersResults[1]);
 console.log(`сумма користувачів: ${usersResults[0]}`);
