@@ -50,19 +50,17 @@ const users = [{
     "address": "314 Dunne Place, Bawcomville, Guam, 9053"
 }]
 
-function usersChecks(users) {
-    const usersBalanceMore2000 = [];
-    let sum = 0
-    for (let user of users) {
-        const temp = user.balance.replace(/[^0-9.]/g, '');
+const usersChecks = (users) => {
+    const usersBalances = [];
+    let sum = 0;
+    users.forEach((user) => {
+        const temp = user.balance.replace('$', '').replace(',', '');
         sum += temp * 100;
-        if (temp > 2000) {
-            usersBalanceMore2000.push(user.phone);
-        }
-    }
+        temp > 2000 && usersBalances.push(user.phone);
+    });
     sum = sum / 100;
-    return [sum, usersBalanceMore2000];
+    return [sum, usersBalances];
 }
-const usersResults = usersChecks(users);
-console.log(`масив телефонних номерів користувачів балангс яких більше 2000: `, usersResults[1]);
-console.log(`сумма користувачів: ${usersResults[0]}`);
+const [sum, usersBalances] = usersChecks(users);
+console.log(`масив телефонних номерів користувачів балангс яких більше 2000: `, usersBalances);
+console.log(`сумма користувачів: ${sum}`);
