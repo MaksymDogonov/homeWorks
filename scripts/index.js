@@ -46,4 +46,14 @@ const task2 = (num, deg) => {
     }
     return pow(num, deg)
 }
-console.log(task2(5, -1));
+console.log(task2(5, 2));
+
+const task3 = (num1, num2) => {
+    const sum = (a, b) => {
+        if (b === 0)
+            return a;
+        return sum(a + 1, b - 1);
+    }
+    return sum(num1, num2)
+}
+console.log(task3(5, 5));
