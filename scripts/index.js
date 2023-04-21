@@ -111,17 +111,14 @@ const mul = ninth(array);
 console.log(`mul ${mul}`);
 
 const tenth = (arr) => {
-    let maxElement = array[0];
-    const arrNew = [];
-    const maxNumber = (element, index) => {
-        if (element > maxElement) {
-            maxElement = element;
-            arrNew.push(element);
-        }
+    const arrNew = arr;
+    const maxElementEx10 = arr.reduce((x, y) => Math.max(x, y));
+    for (let i = 0; i < arr.length; i++) {
+        if(arrNew[i] === maxElementEx10) continue;
+        arrNew[i] = 0;
     }
-    array.forEach(maxNumber);
-    return arrNew
+    return [arrNew, maxElementEx10];
 }
-const arrNew = tenth(array);
-console.log(`максимальний елемент масиву ${arrNew[arrNew.length - 1]}`);
-console.log(arrNew)
+const [arrNew, maxElementEx10] = tenth(array);
+console.log(`максимальний елемент масиву ${maxElementEx10}`);
+console.log(arrNew);
