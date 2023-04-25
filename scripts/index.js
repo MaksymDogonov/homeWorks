@@ -9,7 +9,7 @@ void function () {
             if (arrOfNumber.length === numbersToGenerate) return NaN;
             const randomNumber = Math.floor(Math.random() * numbersToGenerate) + 1;
             if (arrOfNumber.includes(randomNumber)) {
-                return numberGenerator;
+                return numberGenerator();
             }
             arrOfNumber.push(randomNumber);
             return randomNumber;
