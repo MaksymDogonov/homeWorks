@@ -1,10 +1,9 @@
 'use strict';
 
-const sum = (number) => {
+const fn = () => {
     let result = 0;
-    const plus = number;
-    function save() {
-        result += plus;
+    return (number) => {
+        result += number;
         return result;
     }
 };
