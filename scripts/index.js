@@ -1,31 +1,9 @@
 'use strict';
-
-function bind(fn, context, ...rest) {
-    return function(...args) {
-        const uuid = Date.now().toString();
-        context[uuid] = fn;
-        const res = context[uuid](...rest, ...args);
-        delete context[uuid];
+const bind = (fn, context, ...rest) => {
+    return (...args) => {
+        context.fn = fn;
+        const res = context.fn(...rest, ...args);
+        delete context.fn;
         return res;
     }
 }
-
-
-
-const user = {
-    firstName: '',
-    lastName: '',
-    fullName() {
-        return `${this.firstName} ${this.lastName}`
-    }
-}
-
-function getFullName(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    return this.fullName();
-}
-
-bind(getFullName, user, 'Иван', 'Человеков')() // => Иван Человеков
-bind(getFullName, user, 'Иван')('Человеков') // => Иван Человеков
-bind(getFullName, user)('Иван', 'Человеков') // => Иван Человеков
