@@ -1,11 +1,14 @@
 "use strict";
 
-const formInfo = (event) => {
-  const formData = new FormData(event.target);
-  const resultObj = {};
-  formData.forEach((value, key) => (resultObj[key] = value));
-  console.log(resultObj);
-  event.preventDefault();
-};
+void (function () {
+  const form = document.querySelector("#form");
+  const inputs = form.querySelectorAll("input, select, textarea ");
 
-document.documentElement.addEventListener("submit", formInfo);
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const info = {};
+    inputs.forEach(({ name, value }) => (info[name] = value));
+    console.log(info);
+  });
+})();
