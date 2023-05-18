@@ -1,4 +1,5 @@
 "use strict";
+import { INFO_KEY } from "./script";
 
 void (function () {
   const infoKey = "formInfo";
