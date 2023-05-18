@@ -2,10 +2,9 @@
 import { INFO_KEY } from "./script";
 
 void (function () {
-  const infoKey = "formInfo";
   const ul = document.createElement("ul");
   const loadedInfo = () => {
-    const data = JSON.parse(localStorage.getItem(infoKey));
+    const data = JSON.parse(localStorage.getItem(INFO_KEY));
     if (!data) throw new Error("Local storage is empty");
 
     for (const [key, value] of Object.entries(data)) {
