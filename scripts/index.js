@@ -8,12 +8,12 @@ void (function () {
   );
   const INFO_KEY = "todoCards";
 
-  const todoItem = ({ title, description }) => {
+  const todoItem = ({ id, title, value }) => {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = `<div class='col-4'>
                               <div class='taskWrapper'>
                                 <div class='taskHeading'>${title}</div>
-                                <div class='taskDescription'>${description}</div>
+                                <div class='taskDescription'>${value}</div>
                               </div>
                              </div>`;
     return wrapper;
@@ -25,15 +25,17 @@ void (function () {
 
   const getTodoItems = () => {
     const info = JSON.parse(localStorage.getItem(INFO_KEY));
-    if (!info) return [];
+    if (!info) return {};
     return info;
   };
 
   const saveTodoItem = (saveInfo) => {
     const tempData = getTodoItems();
-    tempData.push(saveInfo);
+    const lastItemIndex = Object.keys(tempData).at(-1) || 0;
+    const newItemIndex = Number(lastItemIndex) + 1;
+    tempData[newItemIndex] = saveInfo;
     localStorage.setItem(INFO_KEY, JSON.stringify(tempData));
-    return getTodoItems().at(-1);
+    return newItemIndex;
   };
 
   form.addEventListener("submit", (event) => {
@@ -43,16 +45,16 @@ void (function () {
       accum[name] = value;
       return accum;
     }, {});
-    const saveEl = saveTodoItem(data);
-    createTodoItem(todoItem(saveEl));
+    const id = saveTodoItem(data);
+    createTodoItem(todoItem({ id, ...data }));
   });
 
   const loadedInfo = () => {
     const data = getTodoItems();
-    if (!data.length) return;
+    if (Object.keys(data).length === 0) return;
 
-    data.forEach((item) => {
-      const temp = todoItem(item);
+    Object.entries(data).forEach(([id, data]) => {
+      const temp = todoItem({ id, ...data });
       createTodoItem(temp);
     });
     document.removeEventListener("DOMContentLoaded", loadedInfo);
