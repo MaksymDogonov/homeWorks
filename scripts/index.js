@@ -1,61 +1,60 @@
 "use strict";
 
 void (function () {
-  const form = document.querySelector("#todoForm");
-  const divForNewCards = document.querySelector("#todoItems");
-  const inputs = Array.from(
-    form.querySelectorAll("input:not([type=reset]), textarea ")
-  );
-  const INFO_KEY = "formInfo";
+    const form = document.querySelector("#todoForm");
+    const divContainer = document.querySelector("#todoItems");
+    const inputs = Array.from(form.querySelectorAll("input:not([type=reset]), textarea "));
+    const INFO_KEY = "todoCards";
 
-  const createTodoItem = ({ title, description }) => {
-    const wrapper = document.createElement("div");
-    wrapper.innerHTML = `<div class='col-4'>
-                          <div class='taskWrapper'>
-                            <div class='taskHeading'>${title}</div>
-                            <div class='taskDescription'>${description}</div>
-                          </div>
-                         </div>`;
-    divForNewCards.appendChild(wrapper); //
-    return wrapper; //
-  };
+    const todoItem = ({title, description}) => {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = `<div class='col-4'>
+                              <div class='taskWrapper'>
+                                <div class='taskHeading'>${title}</div>
+                                <div class='taskDescription'>${description}</div>
+                              </div>
+                             </div>`;
+        return wrapper;
+    };
 
-  const getInfo = () => {
-    const data = JSON.parse(localStorage.getItem(INFO_KEY));
-    if (!data) return [];
-    return data;
-  };
+    const createTodoItem = (domEl) => {
+        divContainer.prepend(domEl);
+    }
 
-  const saveData = getInfo(data);
+    const getTodoItems = () => {
+        const info = JSON.parse(localStorage.getItem(INFO_KEY));
+        if (!info) return [];
+        return info;
+    }
+    console.log(getTodoItems())//
 
-  createTodoItem(saveData);
+    const saveTodoItem = (saveInfo) => {
+        const tempData = getTodoItems();
+        tempData.push(saveInfo);
+        localStorage.setItem(INFO_KEY, JSON.stringify([tempData]));
+        return getTodoItems().at(-1);
+    };
 
-  const loadedInfo = () => {
-    const data = getInfo();
-    if (!data.length) return;
-
-    data.forEach((todoItem) => {
-      const temp = createTodoItem(todoItem);
-      createTodoItem(temp);
+    form.addEventListener("submit", event => {
+        event.preventDefault();
+        event.stopPropagation();
+        const data = inputs.reduce((accum, {name, value}) => {
+            accum[name] = value
+            return accum;
+        }, {});
+        const saveEl = saveTodoItem(data);
+        createTodoItem(todoItem(saveEl));
     });
-    document.removeEventListener(loadedInfo);
-  };
 
-  const saveTodoItem = (dataSave) => {
-    const tempData = getInfo();
-    tempData.push(dataSave);
-    localStorage.setItem(INFO_KEY, JSON.stringify(tempData));
-    return getInfo().at(-1);
-  };
+    const loadedInfo = () => {
+        const data = getTodoItems();
+        if(!data.length) return;
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    const info = {};
-
-    inputs.forEach(({ name, value }) => (info[name] = value));
-    localStorage.setItem(INFO_KEY, JSON.stringify(info));
-    return info;
-  });
-  document.addEventListener(loadedInfo);
+        data.forEach(item =>{
+            const temp = todoItem(item);
+            createTodoItem(temp);
+        })
+        document.removeEventListener('DOMContentLoaded', loadedInfo);
+    }
+    document.addEventListener('DOMContentLoaded', loadedInfo);
 })();
