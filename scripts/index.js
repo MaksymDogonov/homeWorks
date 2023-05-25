@@ -8,16 +8,26 @@ void (function () {
   );
   const INFO_KEY = "todoCards";
 
-  const todoItem = ({ id, title, value }) => {
+  const todoItem = ({ id, title, description }) => {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = `<div class='col-4'>
                               <div class='taskWrapper'>
                                 <div class='taskHeading'>${title}</div>
-                                <div class='taskDescription'>${value}</div>
+                                <div class='taskDescription'>${description}</div>
+                                <button id='delete-${id}'>Delete</button>
                               </div>
                              </div>`;
+
     return wrapper;
   };
+
+  divContainer.addEventListener("click", (event) => {
+    const clickedElement = event.target;
+    if (clickedElement.id.includes("delete-")) {
+      const itemId = Number(clickedElement.id.replace("delete-", ""));
+      console.log("Clicked id:", itemId);
+    }
+  });
 
   const createTodoItem = (domEl) => {
     divContainer.prepend(domEl);
@@ -41,8 +51,8 @@ void (function () {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const data = inputs.reduce((accum, { name, value }) => {
-      accum[name] = value;
+    const data = inputs.reduce((accum, { name, value: description }) => {
+      accum[name] = description;
       return accum;
     }, {});
     const id = saveTodoItem(data);
