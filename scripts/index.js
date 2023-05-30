@@ -7,65 +7,82 @@ void (function () {
     form.querySelectorAll("input:not([type=reset]), textarea ")
   );
   const INFO_KEY = "todoCards";
+  const ATR_KEY = "data-id";
+  let actualID = 1;
 
   const todoItem = ({ id, title, description }) => {
     const wrapper = document.createElement("div");
-    wrapper.innerHTML = `<div class='col-4'>
-                              <div class='taskWrapper'>
-                                <div class='taskHeading'>${title}</div>
-                                <div class='taskDescription'>${description}</div>
-                                <button id='delete-${id}'>Delete</button>
-                              </div>
-                             </div>`;
-
+    wrapper.setAttribute(ATR_KEY, id);
+    wrapper.classList.add("col-4");
+    wrapper.innerHTML = `<div class='taskWrapper'>
+                            <div class='taskHeading'>${title}</div>
+                            <div class='taskDescription'>${description}</div>
+                            <button class='delete'>Delete</button>
+                         </div>`;
     return wrapper;
   };
 
-  divContainer.addEventListener("click", (event) => {
-    const clickedElement = event.target;
-    if (clickedElement.id.includes("delete-")) {
-      const itemId = Number(clickedElement.id.replace("delete-", ""));
-      console.log("Clicked id:", itemId);
-    }
-  });
-
   const createTodoItem = (domEl) => {
+    if (!(domEl instanceof HTMLElement)) alert("is not  HTML element");
     divContainer.prepend(domEl);
   };
 
   const getTodoItems = () => {
-    const info = JSON.parse(localStorage.getItem(INFO_KEY));
-    if (!info) return {};
-    return info;
+    const tempData = JSON.parse(localStorage.getItem(INFO_KEY));
+    if (!tempData) return [];
+    return tempData;
   };
 
   const saveTodoItem = (saveInfo) => {
     const tempData = getTodoItems();
-    const lastItemIndex = Object.keys(tempData).at(-1) || 0;
-    const newItemIndex = Number(lastItemIndex) + 1;
-    tempData[newItemIndex] = saveInfo;
+    const clonSaveInfo = { ...saveInfo, id: actualID };
+    tempData.push(clonSaveInfo);
     localStorage.setItem(INFO_KEY, JSON.stringify(tempData));
-    return newItemIndex;
+    actualID += 1;
+    return getTodoItems().at(-1);
+  };
+
+  const deleteFromDOM = ({ id }) => {
+    divContainer.querySelector(`[${ATR_KEY} = '${id}']`).remove();
+  };
+
+  const deleteByID = (id) => {
+    const tempData = getTodoItems();
+    const index = tempData.findIndex((item) => item.id === id);
+    const deleteItem = tempData.splice(index, 1);
+    localStorage.setItem(INFO_KEY, JSON.stringify(tempData));
+    return deleteItem[0];
   };
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const data = inputs.reduce((accum, { name, value: description }) => {
-      accum[name] = description;
+    const data = inputs.reduce((accum, { name, value }) => {
+      accum[name] = value;
       return accum;
     }, {});
-    const id = saveTodoItem(data);
-    createTodoItem(todoItem({ id, ...data }));
+    const saveInfo = saveTodoItem(data);
+    createTodoItem(todoItem(saveInfo));
+  });
+
+  divContainer.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (!event.target.closest(".delete")) return console.log("111");
+    const itemId = Number(
+      event.target.closest(`[${ATR_KEY}]`).getAttribute(ATR_KEY)
+    );
+    const deleteEL = deleteByID(itemId);
+    deleteFromDOM(deleteEL);
   });
 
   const loadedInfo = () => {
     const data = getTodoItems();
-    if (Object.keys(data).length === 0) return;
-
-    Object.entries(data).forEach(([id, data]) => {
-      const temp = todoItem({ id, ...data });
-      createTodoItem(temp);
+    if (!data.length) return;
+    actualID = Number(data.at(-1).id) + 1;
+    data.forEach((item) => {
+      const pattern = todoItem(item);
+      createTodoItem(pattern);
     });
     document.removeEventListener("DOMContentLoaded", loadedInfo);
   };
