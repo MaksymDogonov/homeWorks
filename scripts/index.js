@@ -4,7 +4,7 @@ void (function () {
   const form = document.querySelector("#todoForm");
   const divContainer = document.querySelector("#todoItems");
   const inputs = Array.from(
-    form.querySelectorAll("input:not([type=reset]), textarea ")
+      form.querySelectorAll("input:not([type=reset]), textarea ")
   );
   const INFO_KEY = "todoCards";
   const ATR_KEY = "data-id";
@@ -68,9 +68,9 @@ void (function () {
   divContainer.addEventListener("click", (event) => {
     event.stopPropagation();
 
-    if (!event.target.closest(".delete")) return console.log("111");
+    if (!event.target.closest(".delete")) return;
     const itemId = Number(
-      event.target.closest(`[${ATR_KEY}]`).getAttribute(ATR_KEY)
+        event.target.closest(`[${ATR_KEY}]`).getAttribute(ATR_KEY)
     );
     const deleteEL = deleteByID(itemId);
     deleteFromDOM(deleteEL);
