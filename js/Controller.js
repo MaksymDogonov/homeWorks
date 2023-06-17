@@ -52,6 +52,6 @@ const Controller = {
     const tempData = Model.getData();
     const filteredTempData = tempData.filter((item) => item.id !== id);
     localStorage.setItem(Model.dataKey, JSON.stringify(filteredTempData));
-    View.todoContainer.querySelector(`[data-id = '${id}']`).remove();
+    View.deleteFromPage(id);
   },
 };

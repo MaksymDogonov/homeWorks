@@ -32,4 +32,7 @@ const View = {
     if (typeof createTemplateFunc !== "function") return;
     this.createTemplate = createTemplateFunc;
   },
+  deleteFromPage(id) {
+    this.todoContainer.querySelector(`[data-id = '${id}']`).remove();
+  },
 };
