@@ -23,8 +23,8 @@ const api = (item) => {
   return close;
 };
 
-const preview = api(arr);
-console.log(preview());
-console.log(preview());
-console.log(preview());
-console.log(preview());
+const result = api(arr);
+console.log(result());
+console.log(result());
+console.log(result());
+console.log(result());
