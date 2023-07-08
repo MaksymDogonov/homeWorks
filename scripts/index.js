@@ -2,9 +2,8 @@
 (function () {
   class Hamburger {
     constructor(size, filling) {
-      this.size = size;
-      this.filling = filling;
-      this.objToppings = {};
+      this.price = size.price + filling.price;
+      this.calories = size.calories + filling.calories;
     }
 
     static SIZE_SMALL = {
@@ -43,28 +42,16 @@
     };
 
     addTopping(item) {
-      if (Object.values(this.objToppings).length !== 0) {
-        this.objToppings = {
-          price: this.objToppings.price + item.price,
-          calories: this.objToppings.calories + item.calories,
-        };
-        return this.objToppings;
-      }
-      return (this.objToppings = item);
+      this.price += item.price;
+      this.calories += item.calories;
     }
 
     calculateCalories() {
-      const calories =
-        this.size.calories + this.filling.calories + this.objToppings.calories;
-
-      return `${calories}`;
+      return this.calories;
     }
 
     calculatePrice() {
-      const price =
-        this.size.price + this.filling.price + this.objToppings.price;
-
-      return `${price}`;
+      return this.price;
     }
   }
 
@@ -73,7 +60,7 @@
     Hamburger.STUFFING_CHEESE
   );
 
-  console.log(hamburger.addTopping(Hamburger.TOPPING_MAYO));
+  hamburger.addTopping(Hamburger.TOPPING_MAYO);
   console.log("Calories: " + hamburger.calculateCalories());
   console.log("Price: " + hamburger.calculatePrice());
   hamburger.addTopping(Hamburger.TOPPING_SAUCE);
