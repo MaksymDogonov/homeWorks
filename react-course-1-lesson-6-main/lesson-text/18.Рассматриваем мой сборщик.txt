@@ -1,4 +1,0 @@
-https://github.com/VladimirShaitan/project-template/blob/scss/gulpfile.js
-
-
-Качаем и изучаем
