@@ -1,17 +1,26 @@
 {
-  "name": "homeworks",
+  "name": "layout-project-main",
   "version": "1.0.0",
-  "description": "Вам нужно написать функции indexOf, lastIndexOf, find, findIndex, includes, every и some, которые работают так же, как\r одноименные методы массивов.",
-  "main": "index.js",
+  "description": "Создайте директорию layout-project для своего проекта Установите таск-менеджер Gulp и проверьте, чтобы версия была не ниже 4.0 Создайте приблизительную структуру вашего проекта. Вы можете придумать её самостоятельно или взять пример из урока. Главное — наличие отдельных директорий под версию для разработки и версию после работы таск-менеджера Gulp Залить все на GITHub",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaksymDogonov/layout-project.git#main"
+  },
+  "keywords": [
+    "key"
+  ],
+  "author": "Dogonov Maksym",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^8.38.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "prettier": "^2.8.7"
+  "bugs": {
+    "url": "https://github.com/MaksymDogonov/layout-project/issues"
+  },
+  "homepage": "https://github.com/MaksymDogonov/layout-project/tree/main#readme",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0"
   }
 }
