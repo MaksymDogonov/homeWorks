@@ -93,6 +93,10 @@ npm init
 npm install gulp
 npm install gulp-cli
 gulp --version
+npm install sass gulp-sass --save-dev
+npm install pug gulp-pug --save-dev
+npm install browser-sync --save-dev
+
 
 gulpfile.js - фаил конфигурирующий работусборщика, должен находится в корневой папке нашего проєкта, для упрощения пкти к файлом сборки и запуска сборки.
 gulpfile.js - можно разделить на 3 части:
