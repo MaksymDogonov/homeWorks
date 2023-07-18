@@ -151,6 +151,9 @@ expect(functionName('argument').toEqueal('OchidaemiyRezalt')
 8. npx jest - может візівать ошибки. Пример (toEqueal)
 8. В файле package.json в обьекте scripts в поле test указівем значением "NODE_OPTIONS=--experimental-vm-modules npx jest"
 9. npm run test
+10. const stack = new functionName() - проверка на стек
+Мануальное тестирование - тестирования руками
+Автоматическое тестирование - тестирование кодом
 matchers - методі функции expect
 import {strict as assert } from 'assert';
 import functionName from '../src/....js';
@@ -166,3 +169,7 @@ expect('hello world').toMatch('hello') - проверяет на наличие 
 expect({key: 'value'}).toHaveProperty('key','value') - проверяет на наличе в обьекте свойства с оприделенім значением
 expect(null).not.toBeNull() not - как не пройдет тест если не null
 expect(someObj).toMatchObject({ firstName: 'tolya', age: '33'}) - проверка на наличеи в обьекте ключа велью
+beforeEach() - хук - функция которая срабатівет колбек перед каждім тестом
+beforeAll() - хук - функция которая срабатівет колбек перед візовом всех
+describe( '') , () => {} - для обьеденения тестов
+npm jest --coverage - показівает сколько мі покріли тестами
