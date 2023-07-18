@@ -134,3 +134,35 @@ gulp-sass - плагин для gulp
 npm install sass gulp-sass --save-dev - пример
 browser-sync - для хоста лайф сервера
 
+                            # **JEST**  
+TDD - Test Driven Development - разработка через тесті (сперватест потом сам код)
+BDD - Behavior Driven Development - разработка через поведение (как можно упрошение и понятние с понятніми названиями)
+ JEST - фреймворк от фейсбука для тестирования
+1. Создаем  папку project-jest и делаем npm init
+2. Создаем в данной папке index.js
+3. Устанавливаем Jest - npm i --seve-dev jest
+4. В файле package.json добвляем "type": "module"
+5. Папка для теста лежит в корне с названием __tests__
+6. Создаем фаил index.test.js
+7. import functionName from '../**/index.js
+test('functionName', () =>{
+expect(functionName('argument').toEqueal('OchidaemiyRezalt')
+});
+8. npx jest - может візівать ошибки. Пример (toEqueal)
+8. В файле package.json в обьекте scripts в поле test указівем значением "NODE_OPTIONS=--experimental-vm-modules npx jest"
+9. npm run test
+matchers - методі функции expect
+import {strict as assert } from 'assert';
+import functionName from '../src/....js';
+assert.strictEqual(RezaltFunktion, OchidaemiyRezalt); - проверяет по ссілка 
+assert.deepEqual({},{}) - сравнивает ключи
+.toEqueal - строгое сравнение
+expect(true).toBe() - сравнение как =
+expect(null).toBeNull() - проверяет на null
+expect(true).toBeTruthy() - проверяет на true
+expect(undefined).toBeUndefined() - проверяет на undefined
+expect([1,2,3]).toContain(2) - проверяет на наличие єлемента в масиве
+expect('hello world').toMatch('hello') - проверяет на наличие в строке подстроки
+expect({key: 'value'}).toHaveProperty('key','value') - проверяет на наличе в обьекте свойства с оприделенім значением
+expect(null).not.toBeNull() not - как не пройдет тест если не null
+expect(someObj).toMatchObject({ firstName: 'tolya', age: '33'}) - проверка на наличеи в обьекте ключа велью
