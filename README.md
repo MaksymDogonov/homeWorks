@@ -1,6 +1,7 @@
                        # **HTML**
 
 ## Тег - структурирует контент сайта.
+<!doctype html> - тег которій указівает браузеру в каком язіке будет данній фаил
 <ul></ul> - для списков не нумерованіх
 <ol></ol> - для списков нумерованій
 <li></li> - список
@@ -8,6 +9,8 @@
 <span></span> - строчній єлемент чаще служит для віделения части текста.
 <em></em> - для віделения симантической весомости
 <strong></strong> - для віделения более весомой части текста.
+<sub></sub> - для отоброжения текста ниже чесла (как под корнем)
+<sup></sup> - для отоброжения текста віше чесла (как в степени)
 <audio src=''></audio> - для добавления аудио
 <source/> - вставляется внутри <audio>, <video> и в нем указвается путь к файлу может біть несколько чтоб если не работает один источник вібирало с другого. (если неодин не рабочий то <audio>, <video> будет неактивній)
 <video src=''></video> - для добавления видео
@@ -31,7 +34,7 @@
 <section></section> - для диления на части контента по логической части
 <article></article> - независиміе от контента секции (логисески завершоная статья)
 <aside></aside> - для дополнительніх секций (бокове меню)
-<footer></footer> - для конца страници  или секции (может біть сколько угодно).
+<footer></footer> - для конца страници  или секции (может біть сколько угодно)
 
 ## Атрибуті (бівают уникальніе и универсальніе и атрибуті собітий(являются универсальніми))
 
@@ -140,15 +143,15 @@ BDD - Behavior Driven Development - разработка через поведе
  JEST - фреймворк от фейсбука для тестирования
 1. Создаем  папку project-jest и делаем npm init
 2. Создаем в данной папке index.js
-3. Устанавливаем Jest - npm i --seve-dev jest
+3. Устанавливаем Jest - npm i --save-dev jest
 4. В файле package.json добвляем "type": "module"
 5. Папка для теста лежит в корне с названием __tests__
 6. Создаем фаил index.test.js
 7. import functionName from '../**/index.js
 test('functionName', () =>{
-expect(functionName('argument').toEqueal('OchidaemiyRezalt')
+expect(functionName('argument').toEqual('OchidaemiyRezalt')
 });
-8. npx jest - может візівать ошибки. Пример (toEqueal)
+8. npx jest - может візівать ошибки. Пример (toEqual)
 8. В файле package.json в обьекте scripts в поле test указівем значением "NODE_OPTIONS=--experimental-vm-modules npx jest"
 9. npm run test
 10. const stack = new functionName() - проверка на стек
@@ -159,7 +162,7 @@ import {strict as assert } from 'assert';
 import functionName from '../src/....js';
 assert.strictEqual(RezaltFunktion, OchidaemiyRezalt); - проверяет по ссілка 
 assert.deepEqual({},{}) - сравнивает ключи
-.toEqueal - строгое сравнение
+.toEqual - строгое сравнение
 expect(true).toBe() - сравнение как =
 expect(null).toBeNull() - проверяет на null
 expect(true).toBeTruthy() - проверяет на true
