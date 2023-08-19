@@ -46,6 +46,16 @@
         })
     }
 
+    const events = (postId) => {
+        postContainer.querySelector('.comments').addEventListener('click', (e) => {
+            postContainer.querySelector('.comments').remove();
+
+            getComments(postId).then((data) => {
+                renderComments(data);
+            });
+        });
+    }
+
     document.querySelector('.form_container').addEventListener('submit', (e) => {
         e.preventDefault();
         const target = e.target
@@ -54,13 +64,8 @@
         getPostById(postId).then((data) => {
             renderPost(data);
 
-            postContainer.querySelector('.comments').addEventListener('click', (e) => {
-                postContainer.querySelector('.comments').remove();
+            events(postId)
 
-                getComments(postId).then((data) => {
-                    renderComments(data);
-                });
-            });
         }).catch((error) => {
             console.log(error);
         });
