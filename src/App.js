@@ -1,12 +1,16 @@
 import React from "react"
-import Component from "./components/Component";
+import Card from "./components/Card";
 
 class App extends React.Component {
-  render() {
-    return (
-        <Component/>
-    )
-  }
+    render() {
+        return (
+            <>
+                <Card title='title'/>
+                <Card text='text'/>
+                <Card title='title' text='text'/>
+            </>
+        )
+    }
 }
 
 export default App;
