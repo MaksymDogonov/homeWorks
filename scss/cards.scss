@@ -13,6 +13,9 @@
 
   @include mediaMax(1160px) {
     flex-direction: column;
+    .cards__container {
+      height: 100%;
+    }
   }
 }
 
@@ -24,6 +27,7 @@
 
   @include mediaMax(1160px) {
     width: 100%;
+
   }
 
   @include mediaMax(430px) {
