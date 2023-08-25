@@ -12,9 +12,8 @@ header {
   justify-content: space-between;
   gap: 20px;
 
-  @include mediaMax(1160px) {
-    flex-direction: column;
-    align-items: flex-start;
+  @include mediaMax(960px) {
+    width: 100%;
   }
 }
 
@@ -23,7 +22,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
   }
 }
 
@@ -31,8 +29,9 @@ header {
   display: flex;
   align-items: center;
   gap: 17px;
+  margin-left: 10px;
 
-  @include mediaMax(960px) {
+  @include mediaMax(660px) {
     display: none;
   }
 
@@ -40,6 +39,7 @@ header {
     img {
       width: 17px;
       height: 17px;
+
     }
   }
 
@@ -50,8 +50,10 @@ header {
     padding: 5px 0;
     @include CircularSans(17px, 400, 21px);
     color: $black;
-
-    @include mediaMax(1160px) {
+    @include mediaMax(960px) {
+      width: 100%;
+    }
+    @include mediaMax(750px) {
       display: none;
     }
 
@@ -79,11 +81,13 @@ header {
     span {
       background-color: transparent;
     }
+
     span::before {
       top: 0;
       transform: rotate(45deg);
     }
-    span::after{
+
+    span::after {
       top: 0;
       transform: rotate(-45deg);
     }
@@ -142,24 +146,16 @@ header {
   gap: 50px;
 
   @include mediaMax(1160px) {
-    position: absolute;
-    top: 60px;
     left: 0;
-    z-index: 100;
-    width: calc(100% - 60px);
+    width: 100%;
     background-color: $white;
-    box-shadow: 0 4px 4px 0 rgba($black, .1);
+    padding-top: 5px;
+    display: flex;
+  }
+  @include mediaMax(660px) {
     flex-direction: column;
-    padding: 20px 30px 20px 30px;
-    border-top: 1px solid #e8e8e8;
-    display: none;
-
-    transform: translateY(-130%);
-    transition: transform .5s;
-
-    &.active {
-      transform: translateY(0);
-    }
+    align-items: center;
+    gap: 30px;
   }
 }
 
@@ -169,13 +165,24 @@ header {
     align-items: center;
     gap: 40px;
 
-    @include mediaMax(1160px) {
+    @include mediaMax(960px) {
+      width: 100%;
+      gap: 10px;
+    }
+
+    @include mediaMax(660px) {
       flex-direction: column;
+      align-items: center;
       gap: 30px;
     }
 
+
     li {
       position: relative;
+      @include mediaMax(960px) {
+        width: 100%;
+        margin-left: 5px;
+      }
 
       &:before {
         content: '';
