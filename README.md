@@ -1,7 +1,10 @@
-Реализуйте компонент ListGroup, который отрисовывает переданных детей, оборачивая их в список.
+Реализуйте компонент BtnGroup, который отрисовывает две кнопки. Нажатие на любую из кнопок делает ее активной, а другую
+неактивной. При первой загрузке ни одна из кнопок не нажата.
 
-Пример использования: https://github.com/junjun-it-courses/react-hw/blob/master/task-6/using.html
+Пример использования — https://github.com/junjun-it-courses/react-hw/blob/master/task-7/using.html
 
-Результат: https://github.com/junjun-it-courses/react-hw/blob/master/task-6/result.html
+Результат — https://github.com/junjun-it-courses/react-hw/blob/master/task-7/result.html
 
-Подсказки — https://getbootstrap.com/docs/4.0/components/list-group/
+Подсказки
+https://getbootstrap.com/docs/5.1/components/button-group/
+https://www.npmjs.com/package/classnames - для манипуляции с классами юзайте эту библиотеку

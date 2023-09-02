@@ -1,14 +1,11 @@
 import React from "react"
-import ListGroup  from "./components/ListGroup";
+import BtnGroup  from "./components/BtnGroup";
 
 class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <ListGroup>
-                    <p>one</p>
-                    <p>two</p>
-                </ListGroup>;
+                <BtnGroup />
             </div>
         )
     }
