@@ -1,11 +1,7 @@
-Реализуйте компонент Alert, который отрисовывает алерт бутстрапа. Компонент принимает на вход два свойства:
+Реализуйте компонент ListGroup, который отрисовывает переданных детей, оборачивая их в список.
 
-text — отображаемый текст
-type — тип алерта, может принимать одно из следующих значений: primary, secondary, success, danger, warning, info, light, dark;
-Пример использования: https://github.com/junjun-it-courses/react-hw/blob/master/task-5/using.html
-Вывод: https://github.com/junjun-it-courses/react-hw/blob/master/task-5/output.html
+Пример использования: https://github.com/junjun-it-courses/react-hw/blob/master/task-6/using.html
 
+Результат: https://github.com/junjun-it-courses/react-hw/blob/master/task-6/result.html
 
-
-Подсказки
-https://getbootstrap.com/docs/4.0/components/alerts/
+Подсказки — https://getbootstrap.com/docs/4.0/components/list-group/

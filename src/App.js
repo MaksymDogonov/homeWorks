@@ -1,11 +1,14 @@
 import React from "react"
-import Alert  from "./components/Alert";
+import ListGroup  from "./components/ListGroup";
 
 class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Alert type="warning" text="what is love?" />;
+                <ListGroup>
+                    <p>one</p>
+                    <p>two</p>
+                </ListGroup>;
             </div>
         )
     }
