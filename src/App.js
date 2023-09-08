@@ -1,10 +1,10 @@
 import React from "react"
-import Component from "./components/name";
+import Buttons from "./components/Buttons";
 
 class App extends React.Component {
   render() {
     return (
-        <Component/>
+        <Buttons/>
     )
   }
 }
