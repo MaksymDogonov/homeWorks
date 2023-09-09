@@ -1,0 +1,12 @@
+.modal-content{
+    width: 100%;
+}
+
+.btn-close, .modal-close-button{
+    position:fixed;
+    right:10%;
+    top: 10%
+}
+.btn-close{
+    top: 4%
+}

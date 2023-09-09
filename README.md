@@ -1,3 +1,14 @@
-Реализуйте компонент <Card> так, чтобы можно составлять такую структуру — https://github.com/junjun-it-courses/react-hw/blob/master/task-12/layout.jsx
+src/Modal.jsx
+Реализуйте компонент <Modal> (Модальное окно)
 
-Получившийся HTML — https://github.com/junjun-it-courses/react-hw/blob/master/task-12/layout.html
+Использование — https://github.com/junjun-it-courses/react-hw/blob/master/task-13/components.jsx
+
+HTML закрытого состояния — https://github.com/junjun-it-courses/react-hw/blob/master/task-13/layout.html
+
+В открытом состоянии строчка: <div class="modal" style="display: none;"> заменяется
+на <div class="modal fade show" style="display: block;">
+
+У открытого модального окна две кнопки закрывающие его: крестик справа вверху и кнопка Cancel справа внизу.
+
+Подсказка
+https://getbootstrap.com/docs/5.1/components/modal/
