@@ -1,62 +1,45 @@
 import React from "react"
 import {v4 as uuidv4} from 'uuid';
 import Item from "./Item";
+import {Field, Form, Formik} from "formik";
 
 class TodoBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            newTask: '',
             tasks: []
         };
     }
 
-    clickAdd = () => {
-        this.setState((state) => {
-            return {
-                ...state,
-                tasks: [{
-                    uuid: uuidv4(),
-                    value: state.newTask
-                }, ...state.tasks],
-            }
-        })
+    clickAdd = (values) => {
+        this.setState((state) => ({
+            tasks: [{
+                uuid: uuidv4(),
+                value: values.task
+            }, ...state.tasks],
+        }))
     };
 
-    handleChange = ({target}) => {
-        this.setState((state) => {
-            return {
-                ...state,
-                newTask: target.value
-            }
-        })
-    }
-
-
     clickDelete = (uuid) => {
-        const index = this.state.tasks.findIndex((e) => {
-            return e.uuid === uuid
-        })
-        const newTasks = [...this.state.tasks]
-        newTasks.splice(index, 1)
-        this.setState({tasks: newTasks})
+        this.setState(({tasks}) => ({
+            tasks: tasks.filter((it) => it.uuid !== uuid)
+        }));
     };
 
     render = () => {
         return (
             <div>
                 <div className="mb-3">
-                    <div className="d-flex">
-                        <div className="me-3">
-                            <input type="text"
-                                   value={this.state.newTask}
-                                   className="form-control"
+                    <Formik initialValues={{task: ''}} onSubmit={this.clickAdd}>
+                        <Form className="d-flex">
+                            <Field id='task'
+                                   name='task'
                                    placeholder="I am going..."
-                                   onChange={this.handleChange}
+                                   className="form-control me-3"
                             />
-                        </div>
-                        <button type="submit" className="btn btn-primary" onClick={this.clickAdd}>add</button>
-                    </div>
+                            <button type="submit" className="btn btn-primary">add</button>
+                        </Form>
+                    </Formik>
                 </div>
                 <div>
                     {this.state.tasks.map((task) => {
