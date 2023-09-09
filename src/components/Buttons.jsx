@@ -30,9 +30,9 @@ class Buttons extends React.Component {
     });
 
     clickDelete = (uuid) => {
-        this.setState(({logs}) => {
-            return {logs: logs.filter((it) => it.uuid !== uuid)};
-        })
+        this.setState(({logs}) => ({
+            logs: logs.filter((it) => it.uuid !== uuid)
+        }));
     }
 
     render = () => (
