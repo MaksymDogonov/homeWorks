@@ -1,10 +1,10 @@
 import React from "react"
-import Buttons from "./components/Buttons";
+import TodoBox from "./components/TodoBox";
 
 class App extends React.Component {
   render() {
     return (
-        <Buttons/>
+        <TodoBox/>
     )
   }
 }
