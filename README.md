@@ -342,6 +342,8 @@ nameFoo = ({target}) => {
 }
 onChange={this.nameFoo} - при изменение перерендівает
 onSubmit={this.nameFoo} - 
+axios - библеотека для отправки HTTP запроса (включает под капотом Fetch, но возвращает обьект Data)
+
 
 
 
