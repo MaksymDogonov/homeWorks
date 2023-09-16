@@ -1,35 +1,31 @@
-import React from "react"
+import React, {useEffect, useMemo, useState} from "react"
 
-class PostCatalog extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {posts: []};
-    }
+const PostCatalog = () => {
+    const [posts, setPosts] = useState([]);
 
-    state = {posts: []};
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+            setPosts(await res.json());
+        }
+        fetchPosts();
+    }, [])
 
-    async componentDidMount() {
-        const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const posts = await res.json();
-        this.setState({posts: [...posts]})
-    }
+    const PostsList = useMemo(() => posts.map(({id, title, body}) =>
+            <li className="posts_single-post" data-post-id={id} key={id}>
+                <h3 className="posts__post-title">{title}</h3>
+                <p className="posts__post-description">{body}</p>
+            </li>),
+        [posts]);
 
-    render() {
-        const {posts} = this.state;
-        return (
-            <div className="posts">
-                <ul className="posts__list">
-                    {posts.map(({id, title, body}) =>
-                        <li className="posts_single-post" data-post-id={id} key={id}>
-                            <h3 className="posts__post-title">{title}</h3>
-                            <p className="posts__post-description">{body}</p>
-                        </li>)
-                    }
-                </ul>
-            </div>
-        )
-    }
+    return (
+        <div className="posts">
+            <ul className="posts__list">
+                {PostsList}
+            </ul>
+        </div>
+    );
 }
 
 export default PostCatalog;
