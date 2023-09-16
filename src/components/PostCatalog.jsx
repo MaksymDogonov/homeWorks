@@ -2,6 +2,11 @@ import React from "react"
 
 class PostCatalog extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {posts: []};
+    }
+
     state = {posts: []};
 
     async componentDidMount() {
