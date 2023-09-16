@@ -1,10 +1,10 @@
 import React from "react"
-import Component from "./components/name";
+import PostCatalog from "./components/PostCatalog";
 
 class App extends React.Component {
   render() {
     return (
-        <Component/>
+        <PostCatalog/>
     )
   }
 }
