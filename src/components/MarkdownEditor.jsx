@@ -11,16 +11,9 @@ class MarkdownEditor extends React.Component {
     }
 
     componentDidMount() {
-        const {onContentChange} = this.props;
         this.editor = new Editor({
             el: this.editorRef.current,
             hideModeSwitch: true,
-        });
-        this.editor.addHook('change', () => {
-            const content = this.editor.getMarkdown();
-            if (onContentChange) {
-                onContentChange(content);
-            }
         });
     };
 
@@ -30,12 +23,7 @@ class MarkdownEditor extends React.Component {
         }
     }
 
-    render() {
-
-        return (
-            <div ref={this.editorRef}/>
-        )
-    }
+    render = () => (<div ref={this.editorRef}/>);
 }
 
 export default MarkdownEditor;
