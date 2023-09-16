@@ -7,8 +7,6 @@ class PostCatalog extends React.Component {
         this.state = {posts: []};
     }
 
-    state = {posts: []};
-
     async componentDidMount() {
         const res = await fetch('https://jsonplaceholder.typicode.com/posts');
         const posts = await res.json();
