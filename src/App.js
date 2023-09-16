@@ -1,10 +1,10 @@
 import React from "react"
-import PostCatalog from "./components/PostCatalog";
+import MarkdownEditor from "./components/MarkdownEditor";
 
 class App extends React.Component {
   render() {
     return (
-        <PostCatalog/>
+        <MarkdownEditor/>
     )
   }
 }
