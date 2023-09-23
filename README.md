@@ -351,6 +351,17 @@ componentDidUpdate() - сробатівает при кадом обновлен
 componentDidCatch() - для отлова ошибок
 React.createRef() - используется для хронения данніх перед перерендером 
 current.focus() - для фокусировки на обьект
+hook - базавая функция в контексте реакт приложения может работать с стейтом компонента в не єтого компонеента
+useState - возвращает масив из 2ух обьектов , 1 значение, 2 функция с приставкой set...
+useEffect - для отслеживания состояний заменяет componentDidMount, componentDidUpdate, componentWillUnmount.  в качестве 2 аргумента принимает масив в содержание которого он отслеживает.
+useEffect(() => {
+const a = setInterval(() => {}, 1000)
+return() => {clearInterval(a)} - аналог componentWillUnmount
+})
+useContext
+React.createContext - для создания контекста
+.Provider
+use.ref
 
 
 
