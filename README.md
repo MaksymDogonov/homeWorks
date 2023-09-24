@@ -358,11 +358,18 @@ useEffect(() => {
 const a = setInterval(() => {}, 1000)
 return() => {clearInterval(a)} - аналог componentWillUnmount
 })
-useContext
+useContext - для передчи дланніх глобальніх по всему файлу
 React.createContext - для создания контекста
 .Provider
 use.ref
-
+redux - хронятся только те данніе которіе нужні во множества пропсов
+reducer - функция для изменения данніх в стейт
+useSelector()
+useDispatch() - хук которіе возвращает функцию
+mobx - аналог redux
+папка assets - для картинок видео и т.д.
+CSS файлі хронятся в папке theme
+.module.css - для создания модульніх стилей
 
 
 
