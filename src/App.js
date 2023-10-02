@@ -1,12 +1,10 @@
 import React from "react"
-import RenderPage from "./components/renderPage/renderPage";
+import TodoList from "./components/todoList/todoList";
 
-class App extends React.Component {
-  render() {
+const App = () => {
     return (
-        <RenderPage/>
+        <TodoList/>
     )
-  }
 }
 
 export default App;
