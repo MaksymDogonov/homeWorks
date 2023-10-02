@@ -1,6 +1,6 @@
 import React from "react"
 
-class Name extends React.Component {
+class TodoList extends React.Component {
     render() {
         return (
             <div className="name">
@@ -10,4 +10,4 @@ class Name extends React.Component {
     }
 }
 
-export default Name;
+export default TodoList;

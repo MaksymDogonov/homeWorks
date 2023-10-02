@@ -1,10 +1,10 @@
 import React from "react"
-import Component from "./components/name";
+import RenderPage from "./components/renderPage/renderPage";
 
 class App extends React.Component {
   render() {
     return (
-        <Component/>
+        <RenderPage/>
     )
   }
 }
