@@ -1,0 +1,7 @@
+.form_col{
+    flex: 0 0 auto;
+    width: 33.33333333%;
+}
+.form{
+    box-sizing: border-box;
+}
