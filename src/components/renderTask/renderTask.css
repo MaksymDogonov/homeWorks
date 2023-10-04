@@ -1,0 +1,9 @@
+.tasks {
+    flex: 0 0 auto;
+    width: 40%;
+    margin: 30px;
+}
+
+.del_btn {
+    background-color: red;
+}

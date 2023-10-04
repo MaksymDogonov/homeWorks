@@ -1,7 +1,67 @@
-.form_col{
-    flex: 0 0 auto;
-    width: 33.33333333%;
-}
-.form{
+* {
     box-sizing: border-box;
+}
+
+.main_text {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col_form {
+    flex: 0 0 auto;
+    width: 40%;
+    margin: 30px;
+}
+
+.form {
+    box-sizing: border-box;
+
+}
+
+label {
+    display: inline-block;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+}
+
+.form_title_input {
+    display: block;
+    width: 100%;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    margin: 3px;
+    cursor: pointer;
+}
+
+.del {
+    background-color: red;
+    border-radius: 10px;
+}
+
+.res {
+    background-color: yellow;
+    border-radius: 10px;
+}
+
+.sub {
+    background-color: blue;
+    border-radius: 10px;
+}
+
+.col_tasks {
+    flex-wrap: wrap;
 }

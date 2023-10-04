@@ -1,6 +1,6 @@
-import './renderPage.css';
+import './renderTask.css';
 
-const renderPage = ({task, taskName, onRemove}) => {
+const renderTask = ({task, taskName, onRemove}) => {
     return (
         <div className="tasks">
             <p>{taskName}</p>
@@ -17,4 +17,4 @@ const renderPage = ({task, taskName, onRemove}) => {
         </div>
     )
 }
-export default renderPage;
+export default renderTask;
