@@ -1,4 +1,5 @@
 import './renderTask.css';
+import PropTypes from "prop-types";
 
 const renderTask = ({task, taskName, onRemove}) => {
     return (
@@ -17,4 +18,11 @@ const renderTask = ({task, taskName, onRemove}) => {
         </div>
     )
 }
+
+renderTask.propTypes = {
+    taskName: PropTypes.string,
+    task: PropTypes.string,
+    onRemove: PropTypes.func,
+};
+
 export default renderTask;

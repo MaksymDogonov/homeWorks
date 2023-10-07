@@ -1,29 +1,29 @@
-import {useState} from "react"
-import {Formik, Form} from 'formik';
+import {Formik, Form, Field} from 'formik';
 import RenderTask from "../renderTask/renderTask";
 import './todoList.css';
 import {v4 as uuidv4} from 'uuid';
+import {useDispatch, useSelector} from "react-redux";
+import {TaskType} from "../../store";
 
 const TodoList = () => {
-    const [tasks, setTasks] = useState([]);
+    const tasks = useSelector((state) => state.tasks);
+    const dispatch = useDispatch()
 
     const clickAdd = (values) => {
-        setTasks((prevTasks) => [
-            {
+        dispatch({type: TaskType.ADD_TASK, payload: {
                 uuid: uuidv4(),
                 title: values.title,
                 value: values.task,
-
-            },
-            ...prevTasks,
-        ]);
+            }}
+        );
     };
 
     const clickDelete = (uuid) => {
-        setTasks((prevTasks) => prevTasks.filter((task) => task.uuid !== uuid));
+        dispatch({type: TaskType.REMOVE_TASK, payload: uuid});
     };
+
     const clickDeleteAll = () => {
-        setTasks((prevTasks) => []);
+        dispatch({type: TaskType.REMOVE_ALL_TASKS});
     };
 
     return (
@@ -36,11 +36,16 @@ const TodoList = () => {
                             <Form className='form'>
                                 <div className='form_title'>
                                     <label>Task title</label>
-                                    <input className='form_title_input' type='text' name='title'/>
+                                    <Field className='form_title_input' type='text' name='title'/>
                                 </div>
                                 <div className='form_body'>
                                     <label>Task body</label>
-                                    <textarea name='title'></textarea>
+                                    <Field
+                                        name="task"
+                                        render={({field}) => (
+                                            <textarea {...field} />
+                                        )}
+                                    />
                                 </div>
                                 <div className='buttons'>
                                     <div className='form_buttons'>

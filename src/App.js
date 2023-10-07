@@ -1,22 +1,17 @@
 import React from "react"
 import TodoList from "./components/todoList/todoList";
-// import {Provider} from "react-redux";
-// import {createStore} from "redux";
-//
-// const reducer = (state, action) => {
-//     switch (action.type){
-//         default:
-//             return state
-//     }
-// }
-//
-// const store = createStore(reducer)
+import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
+import store from "./store";
+
 
 const App = () => {
     return (
-        // <Provider store={store}>
-            <TodoList/>
-        // </Provider>
+        <BrowserRouter>
+            <Provider store={store}>
+                <TodoList/>
+            </Provider>
+        </BrowserRouter>
     )
 }
 
