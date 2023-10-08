@@ -1,8 +1,10 @@
-import {useParams} from "react-router-dom";
+// import {useParams} from "react-router-dom";
 
-const TaskPage = () => {
-    let index = useParams().id;
-}
+// const TaskPage = () => {
+//     let index = useParams().id;
+// }
+
+import PropTypes from "prop-types";
 
 const renderPage = ({task, taskName, onRemove}) => {
     return (
@@ -21,4 +23,10 @@ const renderPage = ({task, taskName, onRemove}) => {
         </div>
     )
 }
+
+renderPage.propTypes = {
+    taskName: PropTypes.string,
+    task: PropTypes.string,
+    onRemove: PropTypes.func,
+};
 export default renderPage;

@@ -1,9 +1,11 @@
 import {Formik, Form, Field} from 'formik';
 import RenderTask from "../renderTask/renderTask";
-import './todoList.css';
 import {v4 as uuidv4} from 'uuid';
 import {useDispatch, useSelector} from "react-redux";
 import {TaskType} from "../../store";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import './todoList.css';
 
 
 const TodoList = () => {
@@ -35,8 +37,9 @@ const TodoList = () => {
         <main className='main'>
             <h1 className='main_text'> TODO LIST </h1>
             <div className='containet'>
-                <div className='row'>
+                <div className='line'>
                     <div className='col_form'>
+                        <Card className='card' border="primary">
                         <Formik initialValues={{task: '', title: ''}} onSubmit={clickAdd}>
                             <Form className='form'>
                                 <div className='form_title'>
@@ -54,18 +57,19 @@ const TodoList = () => {
                                 </div>
                                 <div className='buttons'>
                                     <div className='form_buttons'>
-                                        <input type='submit' className='btn sub' value='Create Task!'/>
-                                        <input type='reset' value='Reset' className='btn res'/>
+                                        <Button variant="primary"
+                                                type='submit' className='btn sub'>Create Task</Button>{' '}
+                                        <Button variant="warning" type='reset' className='btn res'>Reset</Button>{' '}
                                     </div>
-                                    <button type='button' className='btn del' onClick={clickDeleteAll}>Delete All
-                                    </button>
+                                    <Button variant="danger" type='button' className='btn del' onClick={clickDeleteAll}>Delete All</Button>{' '}
                                 </div>
                             </Form>
                         </Formik>
+                        </Card>
                     </div>
                     <div className="col_tasks">
                         {tasks.map((task) => (
-                            <RenderTask key={task.uuid} task={task.value} taskName={task.title}
+                            <RenderTask key={task.uuid} index={task.uuid} task={task.value} taskName={task.title}
                                         onRemove={() => clickDelete(task.uuid)}/>
                         ))}
                     </div>
