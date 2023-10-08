@@ -5,17 +5,21 @@ import {v4 as uuidv4} from 'uuid';
 import {useDispatch, useSelector} from "react-redux";
 import {TaskType} from "../../store";
 
+
 const TodoList = () => {
     const tasks = useSelector((state) => state.tasks);
     const dispatch = useDispatch()
 
-    const clickAdd = (values) => {
-        dispatch({type: TaskType.ADD_TASK, payload: {
-                uuid: uuidv4(),
-                title: values.title,
-                value: values.task,
-            }}
+    const clickAdd = (values, {resetForm}) => {
+        dispatch({
+                type: TaskType.ADD_TASK, payload: {
+                    uuid: uuidv4(),
+                    title: values.title,
+                    value: values.task,
+                }
+            }
         );
+        resetForm();
     };
 
     const clickDelete = (uuid) => {
@@ -25,6 +29,7 @@ const TodoList = () => {
     const clickDeleteAll = () => {
         dispatch({type: TaskType.REMOVE_ALL_TASKS});
     };
+
 
     return (
         <main className='main'>
@@ -36,7 +41,7 @@ const TodoList = () => {
                             <Form className='form'>
                                 <div className='form_title'>
                                     <label>Task title</label>
-                                    <Field className='form_title_input' type='text' name='title'/>
+                                    <Field className='form_title_input' type='text' name='title' required/>
                                 </div>
                                 <div className='form_body'>
                                     <label>Task body</label>
@@ -52,16 +57,18 @@ const TodoList = () => {
                                         <input type='submit' className='btn sub' value='Create Task!'/>
                                         <input type='reset' value='Reset' className='btn res'/>
                                     </div>
-                                    <button type='button' className='btn del' onClick={clickDeleteAll}>Delete All</button>
+                                    <button type='button' className='btn del' onClick={clickDeleteAll}>Delete All
+                                    </button>
                                 </div>
                             </Form>
                         </Formik>
                     </div>
-                    <div className="col_tasks"></div>
-                    {tasks.map((task) => (
-                        <RenderTask key={task.uuid} task={task.value} taskName={task.title}
-                                    onRemove={() => clickDelete(task.uuid)}/>
-                    ))}
+                    <div className="col_tasks">
+                        {tasks.map((task) => (
+                            <RenderTask key={task.uuid} task={task.value} taskName={task.title}
+                                        onRemove={() => clickDelete(task.uuid)}/>
+                        ))}
+                    </div>
                 </div>
             </div>
         </main>

@@ -8,12 +8,11 @@
 
 .row {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .col_form {
     flex: 0 0 auto;
-    width: 40%;
+    width: 25%;
     margin: 30px;
 }
 
@@ -29,6 +28,7 @@ label {
 textarea {
     display: block;
     width: 100%;
+    resize: vertical;
 }
 
 .form_title_input {
@@ -64,4 +64,5 @@ textarea {
 
 .col_tasks {
     flex-wrap: wrap;
+    display: flex;
 }

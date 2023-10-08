@@ -1,10 +1,13 @@
 import './renderTask.css';
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const renderTask = ({task, taskName, onRemove}) => {
     return (
         <div className="tasks">
-            <p>{taskName}</p>
+            <Link to={"https://google.com/"}>
+                <p>{taskName}</p>
+            </Link>
             <p>{task}</p>
             <hr/>
             <label>
