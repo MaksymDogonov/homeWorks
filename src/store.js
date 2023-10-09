@@ -3,7 +3,8 @@ import {createStore} from "redux";
 export const TaskType = {
     ADD_TASK: 'ADD_TASK',
     REMOVE_TASK: 'REMOVE_TASK',
-    REMOVE_ALL_TASKS: 'REMOVE_ALL_TASKS'
+    REMOVE_ALL_TASKS: 'REMOVE_ALL_TASKS',
+    GET_TASKS: '.GET_TASKS'
 }
 
 const defaultState = {

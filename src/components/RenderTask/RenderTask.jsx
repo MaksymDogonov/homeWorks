@@ -4,12 +4,11 @@ import {Link} from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const renderTask = ({task, taskName, index, onRemove}) => {
+const RenderTask = ({task, taskName, index, onRemove}) => {
     return (
         <div className="tasks">
             <Card border="info" style={{ width: '18rem' }}>
                 <Link to={`/tasks/${index}`} target="_blank">
-                    {/*<p>{taskName}</p>*/}
                     <Card.Header>{taskName}</Card.Header>
                 </Link>
 
@@ -26,11 +25,11 @@ const renderTask = ({task, taskName, index, onRemove}) => {
     )
 }
 
-renderTask.propTypes = {
+RenderTask.propTypes = {
     taskName: PropTypes.string,
     task: PropTypes.string,
     onRemove: PropTypes.func,
     index: PropTypes.string,
 };
 
-export default renderTask;
+export default RenderTask;

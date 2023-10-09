@@ -1,5 +1,5 @@
 import {Formik, Form, Field} from 'formik';
-import RenderTask from "../renderTask/renderTask";
+import RenderTask from "../RenderTask/RenderTask";
 import {v4 as uuidv4} from 'uuid';
 import {useDispatch, useSelector} from "react-redux";
 import {TaskType} from "../../store";

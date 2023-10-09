@@ -1,15 +1,19 @@
 import React from "react"
-import TodoList from "./components/todoList/todoList";
+import TodoList from "./components/TodoList/TodoList";
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import store from "./store";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RenderPage from "./components/RenderPage/RenderPage";
 
 const App = () => {
     return (
         <BrowserRouter>
             <Provider store={store}>
-                <TodoList/>
+                <Routes>
+                    <Route path='/' element={<TodoList/>}/>
+                    <Route path='/tasks/:id' component={<RenderPage/>}/>
+                </Routes>
             </Provider>
         </BrowserRouter>
     )
