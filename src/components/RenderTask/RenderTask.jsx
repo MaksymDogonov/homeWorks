@@ -8,7 +8,7 @@ const RenderTask = ({task, taskName, index, onRemove}) => {
     return (
         <div className="tasks">
             <Card border="info" style={{ width: '18rem' }}>
-                <Link to={`/tasks/${index}`} target="_blank">
+                <Link to={`tasks/${index}`}>
                     <Card.Header>{taskName}</Card.Header>
                 </Link>
 

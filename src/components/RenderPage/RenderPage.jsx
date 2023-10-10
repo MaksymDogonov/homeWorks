@@ -1,56 +1,24 @@
 import './renderPage.css';
-import {Link, Route, Routes} from "react-router-dom";
-import PropTypes from "prop-types";
+import {useMatch} from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import {useDispatch, useSelector} from "react-redux";
-import {TaskType} from "../../store";
-
-
+import {useSelector} from "react-redux";
 
 const RenderPage = () => {
-    const tasks = useSelector((state) => state.tasks);
-    const dispatch = useDispatch()
-
-    const getTasks = () => {
-        dispatch(dispatch({type: TaskType.GET_TASKS}));
-    }
-    console.log(getTasks)
-    const {task, taskName, index, onRemove} = getTasks();
-
-    const renderTaskPage = ({task, taskName, index, onRemove}) => {
-        console.log(tasks)
-        return (
-            <div className="tasks">
-                <Card border="info" style={{ width: '18rem' }}>
-                    <Link to={`/tasks/${index}`} target="_blank">
-                        <Card.Header>{taskName}</Card.Header>
-                    </Link>
-
-                    <Card.Body>
-                        <Card.Text>
-                            {task}
-                        </Card.Text>
-                    </Card.Body>
-                    <Button variant="danger" type="button"
-                            className="btn del_btn"
-                            onClick={onRemove}>Remove task</Button>{' '}
-                </Card>
-            </div>
-        )
-    }
+    const {params} = useMatch('tasks/:id');
+    const {title, value} = useSelector((state) => state.tasks.find(it => it.uuid === params.id));
 
     return (
-        <Routes>
-            <Route path='tasks/:id' element={renderTaskPage(task, taskName, index, onRemove)}/>
-        </Routes>
+        <div className="tasks">
+            <Card border="info" style={{ width: '18rem' }}>
+                <Card.Header>{title}</Card.Header>
+                <Card.Body>
+                    <Card.Text>
+                        {value}
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </div>
     )
 }
 
-RenderPage.propTypes = {
-    taskName: PropTypes.string,
-    task: PropTypes.string,
-    index: PropTypes.string,
-    onRemove: PropTypes.func,
-};
 export default RenderPage;
